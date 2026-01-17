@@ -18,8 +18,13 @@ function App() {;
   }
 
   const addCart = (item, quantity) => {
-    console.log(`${quantity} of ${item.title} was ordered`)
     setCart([...cart, {item, quantity}] )
+  }
+
+  const removeCart = (item) => {
+    const newCart = cart.filter((cartItem) => cartItem.item.id !== item.id)
+    setCart(newCart)
+    setQuantity(quantity - 1)
   }
 
 
@@ -27,7 +32,6 @@ function App() {;
     const fetchData = async () => {
       const response = await fetch(URL);
       const data = await response.json()
-      console.log(data)
       setData(data)
     }
 
@@ -37,7 +41,7 @@ function App() {;
   const router = createBrowserRouter([
     { path: "/", element: <Home quantity={quantity}/> },
     { path: "shop", element: <Shop data={data} cart={cart} quantity={quantity} handleQuantity={handleQuantity} addCart={addCart}/>},
-    { path: "cart", element: <Cart data={data} cart={cart} quantity={quantity} handleQuantity={handleQuantity}/>},
+    { path: "cart", element: <Cart data={data} cart={cart} quantity={quantity} handleQuantity={handleQuantity} removeCart={removeCart}/>},
   ]);
 
   return (

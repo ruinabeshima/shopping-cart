@@ -2,6 +2,7 @@ import NavBar from "./navbar";
 import styles from "../styles/cartpage.module.css";
 
 function Cart(props){
+
   return (
     <>
       <NavBar quantity={props.quantity}/>
@@ -16,6 +17,7 @@ function Cart(props){
                 <p>{cartItem.item.title}</p>
                 <p>${cartItem.item.price * cartItem.quantity}</p>
                 <p>{cartItem.quantity}</p>
+                <button className={styles.removeButton} onClick={() => props.removeCart(cartItem.item)}>Remove</button>
               </div>
             ))
           )}

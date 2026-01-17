@@ -29,3 +29,14 @@
   padding: 0; 
   margin: 0; 
 }
+
+.removeButton {
+  width: 5rem; 
+  height: 2rem;  
+  color: white; 
+  border: none; 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+}
